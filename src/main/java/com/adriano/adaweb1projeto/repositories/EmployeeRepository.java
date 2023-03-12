@@ -12,5 +12,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     Optional<Employee> findByRegistrationNumber(String registrationNumber);
 
-    Optional<List<Employee>> findByNameContaining(String partialName);
+    Optional<List<Employee>> findByNameContainingIgnoreCase(String partialName);
 }

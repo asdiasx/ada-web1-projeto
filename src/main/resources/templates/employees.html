@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title>Sistema de Funcionários</title>
+</head>
+<body class="bg-light">
+<div class="container">
+<h1 class="text-center mb-xxl-5">Lista de Funcionários</h1>
+
+<form method="post" th:action="@{./search}">
+    <label for="name"></label>
+    <input class="form-text" type="text" name="name" id="name"/>
+    <button class="btn btn-secondary " type="submit">Pesquisar</button>
+</form>
+
+<table class="table table-success table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Matrícula</th>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.registrationNumber}"></td>
+        <td th:text="${employee.name}"></td>
+        <td>
+            <div class = "d-inline-flex">
+                <form method="get" th:action="@{./employees/{id}(id=${employee.id})}">
+                    <button class="btn btn-primary" type="submit">Detalhes</button>
+                </form>
+                <form method="post" th:action="@{./employees/delete/{id}(id=${employee.id})}">
+                    <button class="btn btn-warning" type="submit">Apagar</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+</table>
+<a class="btn btn-primary" href="/add-employee">Novo Funcionário</a>
+<a class="btn btn-primary" href="/">Página Inicial</a>
+</div>
+</body>
+</html>

@@ -28,19 +28,38 @@ public class Employee {
         return registrationNumber;
     }
 
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDocument() {
         return document;
     }
 
+    public void setDocument(String document) {
+        this.document = document;
+    }
+
     public int getDependentsQty() {
         return dependentsQty;
     }
 
-    public boolean isActive() {
+    public void setDependentsQty(int dependentsQty) {
+        this.dependentsQty = dependentsQty;
+    }
+
+    public boolean getActive() {
         return active;
+    }
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

@@ -29,7 +29,7 @@ public class EmployeeService {
     }
 
     public List<Employee> findByName(String partialName) {
-        return employeeRepository.findByNameContaining(partialName).orElse(null);
+        return employeeRepository.findByNameContainingIgnoreCase(partialName).orElse(null);
     }
 
     public void deleteById(Long id) {
